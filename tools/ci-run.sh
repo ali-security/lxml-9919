@@ -9,11 +9,7 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   sudo apt install -y gnupg
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
   export release=bionic
-  sudo cat > "/etc/apt/sources.list.d/$release.list"<<EOF
-deb http://archive.ubuntu.com/ubuntu $release universe
-deb http://archive.ubuntu.com/ubuntu $release multiverse
-deb http://security.ubuntu.com/ubuntu $release-security main
-EOF
+  sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu $release universe\ndeb http://archive.ubuntu.com/ubuntu $release multiverse\ndeb http://security.ubuntu.com/ubuntu $release-security main\n" > "/etc/apt/sources.list.d/$release.list"'
 
   sudo apt-get update -y -q
   sudo apt-get install -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
