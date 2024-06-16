@@ -14,12 +14,15 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   export release=bionic
   sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu $release universe\ndeb http://archive.ubuntu.com/ubuntu $release multiverse\ndeb http://security.ubuntu.com/ubuntu $release-security main\n" > "/etc/apt/sources.list.d/$release.list"'
 
+  echo "qwer"
+  cat /etc/apt/sources.list
+  echo "asdf"
   echo "111"
   sudo apt-get update -y
   echo "222"
   sudo apt-get install -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
   sudo /usr/sbin/update-ccache-symlinks
-  echo "/usr/lib/ccache" >> $GITHUB_PATH # export ccache to path
+  echo "/usr/lib/ccache" >>$GITHUB_PATH # export ccache to path
 
   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$GCC_VERSION 60
 
@@ -47,9 +50,10 @@ ccache -s || true
 # Install python requirements
 echo "Installing requirements [python]"
 python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools wheel
-if [ -z "${PYTHON_VERSION##*-dev}" ];
-  then python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' --install-option=--no-cython-compile https://github.com/cython/cython/archive/master.zip;
-  else python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt;
+if [ -z "${PYTHON_VERSION##*-dev}" ]; then
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' --install-option=--no-cython-compile https://github.com/cython/cython/archive/master.zip
+else
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
 fi
 if [ -z "${PYTHON_VERSION##2*}" ]; then
   python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U beautifulsoup4==4.9.3 cssselect==1.1.0 html5lib==1.1 rnc2rng==2.6.5 ${EXTRA_DEPS} || exit 1
@@ -63,9 +67,9 @@ fi
 
 # Build
 CFLAGS="-Og -g -fPIC -Wall -Wextra" python -u setup.py build_ext --inplace \
-      $(if [ -n "${PYTHON_VERSION##2.*}" ]; then echo -n " -j7 "; fi ) \
-      $(if [ "$COVERAGE" == "true" ]; then echo -n " --with-coverage"; fi ) \
-      || exit 1
+  $(if [ -n "${PYTHON_VERSION##2.*}" ]; then echo -n " -j7 "; fi) \
+  $(if [ "$COVERAGE" == "true" ]; then echo -n " --with-coverage"; fi) ||
+  exit 1
 
 ccache -s || true
 
