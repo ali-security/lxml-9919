@@ -54,7 +54,7 @@ build:
 
 require-cython:
 	@[ -n "$(PYTHON_WITH_CYTHON)" ] || { \
-	    echo "NOTE: missing Cython - please use this command to install it: $(PYTHON) -m pip install Cython"; false; }
+	    echo "NOTE: missing Cython - please use this command to install it: $(PYTHON) -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' Cython"; false; }
 
 qemu-user-static:
 	docker run --rm --privileged multiarch/qemu-user-static --reset -p yes

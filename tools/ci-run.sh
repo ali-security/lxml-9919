@@ -36,19 +36,19 @@ ccache -s || true
 
 # Install python requirements
 echo "Installing requirements [python]"
-python -m pip install -U pip setuptools wheel
+python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools wheel
 if [ -z "${PYTHON_VERSION##*-dev}" ];
-  then python -m pip install --install-option=--no-cython-compile https://github.com/cython/cython/archive/master.zip;
-  else python -m pip install -r requirements.txt;
+  then python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' --install-option=--no-cython-compile https://github.com/cython/cython/archive/master.zip;
+  else python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt;
 fi
 if [ -z "${PYTHON_VERSION##2*}" ]; then
-  python -m pip install -U beautifulsoup4==4.9.3 cssselect==1.1.0 html5lib==1.1 rnc2rng==2.6.5 ${EXTRA_DEPS} || exit 1
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U beautifulsoup4==4.9.3 cssselect==1.1.0 html5lib==1.1 rnc2rng==2.6.5 ${EXTRA_DEPS} || exit 1
 else
-  python -m pip install -U beautifulsoup4 cssselect html5lib rnc2rng ${EXTRA_DEPS} || exit 1
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U beautifulsoup4 cssselect html5lib rnc2rng ${EXTRA_DEPS} || exit 1
 fi
 if [ "$COVERAGE" == "true" ]; then
-  python -m pip install "coverage<5" || exit 1
-  python -m pip install --pre 'Cython>=3.0a0' || exit 1
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' "coverage<5" || exit 1
+  python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' --pre 'Cython>=3.0a0' || exit 1
 fi
 
 # Build

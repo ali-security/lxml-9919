@@ -79,18 +79,18 @@ a newer version, the best way is to get the pip_ package management tool
 (or use a `virtualenv <https://pypi.python.org/pypi/virtualenv>`_) and
 run the following::
 
-  pip install lxml
+  pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 If you are not using pip in a virtualenv and want to install lxml globally
 instead, you have to run the above command as admin, e.g. on Linux::
 
-  sudo pip install lxml
+  sudo pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 To install a specific version, either download the distribution
-manually and let pip install that, or pass the desired version
+manually and let pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' that, or pass the desired version
 to pip::
 
-  pip install lxml==3.4.2
+  pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml==3.4.2
 
 .. _pip: http://pypi.python.org/pypi/pip
 
@@ -98,7 +98,7 @@ To speed up the build in test environments, e.g. on a continuous
 integration server, disable the C compiler optimisations by setting
 the ``CFLAGS`` environment variable::
 
-  CFLAGS="-O0"  pip install lxml
+  CFLAGS="-O0"  pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 (The option reads "minus Oh Zero", i.e. zero optimisations.)
 
@@ -126,7 +126,7 @@ management tool to look for packages like ``libxml2-dev`` or
 
 Alternatively, setting ``STATIC_DEPS=true`` will download and build
 both libraries automatically in their latest version, e.g.
-``STATIC_DEPS=true pip install lxml``.
+``STATIC_DEPS=true pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml``.
 
 MacOS-X
 .......
@@ -135,7 +135,7 @@ On MacOS-X, use the following to build the source distribution,
 and make sure you have a working Internet connection, as this will
 download libxml2 and libxslt in order to build them::
 
-  STATIC_DEPS=true sudo pip install lxml
+  STATIC_DEPS=true sudo pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 
 Building lxml from dev sources
@@ -175,7 +175,7 @@ setup.py script, or run ``pip`` with the ``STATIC_DEPS`` or
 
 ::
 
-   STATIC_DEPS=true pip install lxml
+   STATIC_DEPS=true pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 The ``STATICBUILD`` environment variable is handled equivalently to
 the ``STATIC_DEPS`` variable, but is used by some other extension

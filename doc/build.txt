@@ -43,7 +43,7 @@ developer sources (e.g. to test a bug fix that has not been release
 yet) or if you want to be an lxml developer, then you do need a
 working Cython installation.  You can use pip_ to install it::
 
-    pip install -r requirements.txt
+    pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
 
 https://github.com/lxml/lxml/blob/master/requirements.txt
 
@@ -278,12 +278,12 @@ Note that this also works with pip_.  Since you can't pass
 command line options in this case, you have to use an environment
 variable instead::
 
-  STATIC_DEPS=true pip install lxml
+  STATIC_DEPS=true pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 To install the package into the system Python package directory,
 run the installation with "sudo"::
 
-  STATIC_DEPS=true sudo pip install lxml
+  STATIC_DEPS=true sudo pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' lxml
 
 The ``STATICBUILD`` environment variable is handled equivalently to
 the ``STATIC_DEPS`` variable, but is used by some other extension

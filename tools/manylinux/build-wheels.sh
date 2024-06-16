@@ -30,7 +30,7 @@ build_wheel() {
 run_tests() {
     # Install packages and test
     for PYBIN in /opt/python/${PYTHON_BUILD_VERSION}/bin/; do
-        ${PYBIN}/python -m pip install $PACKAGE --no-index -f /io/$WHEELHOUSE || exit 1
+        ${PYBIN}/python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' $PACKAGE --no-index -f /io/$WHEELHOUSE || exit 1
 
         # check import as a quick test
         (cd $HOME; ${PYBIN}/python -c 'import lxml.etree, lxml.objectify')
@@ -53,7 +53,7 @@ build_wheels() {
     for PYBIN in /opt/python/${PYTHON_BUILD_VERSION}/bin; do
         # Install build requirements if we need them and file exists
         test -n "$source" -o ! -e "$REQUIREMENTS" \
-            || ${PYBIN}/python -m pip install -r "$REQUIREMENTS"
+            || ${PYBIN}/python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r "$REQUIREMENTS"
 
         echo "Starting build with $($PYBIN/python -V)"
         build_wheel "$PYBIN" "$source" &
