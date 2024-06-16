@@ -6,6 +6,8 @@ GCC_VERSION=${GCC_VERSION:=8}
 if [ -z "${OS_NAME##ubuntu*}" ]; then
   echo "Installing requirements [apt]"
   sudo apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
+  sudo apt install -y gnupg
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
   export release=bionic
   sudo cat > "/etc/apt/sources.list.d/$release.list"<<EOF
 deb http://archive.ubuntu.com/ubuntu $release universe
