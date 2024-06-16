@@ -106,28 +106,8 @@ jobs:
         env: ${{ matrix.env }}
         run: bash ./tools/ci-run.sh
 
-      - name: Build docs
-        if: contains( env.EXTRA_DEPS, 'sphinx')
-        run: make html
-
-      - name: Upload docs
-        uses: actions/upload-artifact@v2
-        if: ${{ matrix.extra_hash == '-docs' }}
-        with:
-          name: website_html
-          path: doc/html
-          if-no-files-found: ignore
-
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: pycoverage_html
-          path: coverage*
-          if-no-files-found: ignore
-
       - name: Upload Wheel
         uses: actions/upload-artifact@v2
-        if: ${{ matrix.env.STATIC_DEPS == 'true' && env.COVERAGE == 'false' }}
         with:
           name: wheels-${{ runner.os }}
           path: dist/*.whl
