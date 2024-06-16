@@ -11,7 +11,7 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   sudo apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
   sudo apt install -y gnupg
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
-  sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu bionic universe\ndeb http://archive.ubuntu.com/ubuntu bionic multiverse\ndeb http://security.ubuntu.com/ubuntu bionic-security main\n" >> "/etc/apt/sources.list"'
+  sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu bionic main restricted universe multiverse\ndeb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse\n" >> "/etc/apt/sources.list"'
 
   echo "qwer"
   cat /etc/apt/sources.list
