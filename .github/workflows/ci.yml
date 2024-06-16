@@ -21,7 +21,7 @@ jobs:
       matrix:
         # Tests [amd64]
         #
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-13]
         python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9, "3.10"]  # quotes to avoid being interpreted as the number 3.1
         env: [{ STATIC_DEPS: true }, { STATIC_DEPS: false }]
 
@@ -61,7 +61,7 @@ jobs:
 
           # MacOS sub-jobs
           # ==============
-          - os: macos-latest
+          - os: macos-13
             allowed_failure: true   # Unicode parsing fails in Py3
 
     # This defaults to 360 minutes (6h) which is way too long and if a test gets stuck, it can block other pipelines.
