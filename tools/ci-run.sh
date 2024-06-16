@@ -19,7 +19,7 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   echo "111"
   sudo apt-get update -y
   echo "222"
-  sudo apt-get install -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
+  sudo apt-get install --allow-downgrades -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
   sudo /usr/sbin/update-ccache-symlinks
   echo "/usr/lib/ccache" >>$GITHUB_PATH # export ccache to path
 
