@@ -5,6 +5,7 @@ GCC_VERSION=${GCC_VERSION:=8}
 # Set up compilers
 if [ -z "${OS_NAME##ubuntu*}" ]; then
   echo "Installing requirements [apt]"
+  cat /etc/apt/apt-mirrors.txt
   sudo apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
   sudo apt install -y gnupg
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
