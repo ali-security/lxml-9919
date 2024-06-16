@@ -92,8 +92,8 @@ CFLAGS="-Og -g -fPIC" PYTHONUNBUFFERED=x make test || exit 1
 python setup.py install || exit 1
 python -c "from lxml import etree" || exit 1
 
-CFLAGS="-O3 -g1 -mtune=generic -fPIC -flto" \
-  LDFLAGS="-flto" \
+CFLAGS="-O3 -g1 -mtune=generic -fPIC -fno-lto" \
+  LDFLAGS="-fno-lto" \
   make clean wheel || exit 1
 
 ccache -s || true
