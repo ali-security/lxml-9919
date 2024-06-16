@@ -4396,7 +4396,7 @@ class _XMLPullParserTest(unittest.TestCase):
         self.assertEqual([(action, elem.tag) for action, elem in events],
                          expected)
 
-    @unittest.skip("demonstrating skipping")
+    @unittest.skip("fails")
     def test_simple_xml(self):
         for chunk_size in (None, 1, 5):
             #with self.subTest(chunk_size=chunk_size):
