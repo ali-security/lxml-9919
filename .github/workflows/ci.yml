@@ -27,18 +27,18 @@ jobs:
 
         include:
           # Coverage setup
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             python-version: 3.9
             env: { COVERAGE: true }
             extra_hash: "-coverage"
             allowed_failure: true   # shouldn't fail but currently does...
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             python-version: 3.9
             env: { STATIC_DEPS: false, EXTRA_DEPS: "docutils pygments sphinx sphinx-rtd-theme" }
             extra_hash: "-docs"
             allowed_failure: true   # shouldn't fail but currently does...
           # Old library setup with minimum version requirements
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             python-version: 3.9
             env: {
               STATIC_DEPS: true,
@@ -50,18 +50,18 @@ jobs:
           # Ubuntu sub-jobs:
           # ================
           # Pypy
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             python-version: pypy-2.7
             env: { STATIC_DEPS: false }
             allowed_failure: true
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             python-version: pypy-3.7
             env: { STATIC_DEPS: false }
             allowed_failure: true
 
           # MacOS sub-jobs
           # ==============
-          - os: macos-10.15
+          - os: macos-12
             allowed_failure: true   # Unicode parsing fails in Py3
 
     # This defaults to 360 minutes (6h) which is way too long and if a test gets stuck, it can block other pipelines.
