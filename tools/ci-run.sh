@@ -12,7 +12,7 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   sudo apt install -y gnupg
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
   export release=bionic
-  sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu $release universe\ndeb http://archive.ubuntu.com/ubuntu $release multiverse\ndeb http://security.ubuntu.com/ubuntu $release-security main\n" > "/etc/apt/sources.list.d/$release.list"'
+  sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu $release universe\ndeb http://archive.ubuntu.com/ubuntu $release multiverse\ndeb http://security.ubuntu.com/ubuntu $release-security main\n" >> "/etc/apt/sources.list"'
 
   echo "qwer"
   cat /etc/apt/sources.list
