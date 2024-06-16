@@ -6,6 +6,13 @@ GCC_VERSION=${GCC_VERSION:=8}
 if [ -z "${OS_NAME##ubuntu*}" ]; then
   echo "Installing requirements [apt]"
   sudo apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
+  export release=bionic
+  sudo cat > "/etc/apt/sources.list.d/$release.list"<<EOF
+deb http://archive.ubuntu.com/ubuntu $release universe
+deb http://archive.ubuntu.com/ubuntu $release multiverse
+deb http://security.ubuntu.com/ubuntu $release-security main
+EOF
+
   sudo apt-get update -y -q
   sudo apt-get install -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
   sudo /usr/sbin/update-ccache-symlinks
