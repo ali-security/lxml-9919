@@ -93,6 +93,8 @@ jobs:
         uses: ali-security/setup-python@master
         with:
           python-version: ${{ matrix.python-version }}
+        env:
+          PIP_TRUSTED_HOST: "pypi.python.org pypi.org files.pythonhosted.org"
 
       - name: Cache [ccache]
         uses: pat-s/always-upload-cache@v2.1.3
