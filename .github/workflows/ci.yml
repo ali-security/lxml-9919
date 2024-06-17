@@ -90,7 +90,7 @@ jobs:
           fetch-depth: 1
 
       - name: Setup python
-        uses: ali-security/setup-python@master
+        uses: MatteoH2O1999/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
         env:
