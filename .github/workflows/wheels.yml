@@ -23,27 +23,11 @@ jobs:
     - name: Install Python dependencies
       run: python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools && python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U docutils pygments sphinx sphinx-rtd-theme -r requirements.txt
 
-    - name: Build docs and sdist
-      run: make html sdist
-      env: { STATIC_DEPS: false }
-
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: dist/*.tar.gz
-
     - name: Upload sdist
       uses: actions/upload-artifact@v2
       with:
         name: sdist
         path: dist/*.tar.gz
-
-    - name: Upload website
-      uses: actions/upload-artifact@v2
-      with:
-        name: website
-        path: doc/html
 
   Linux:
     runs-on: ubuntu-latest
@@ -97,12 +81,6 @@ jobs:
       run: make sdist wheel_${{ matrix.image }}
       env: { STATIC_DEPS: true, PYTHON_BUILD_VERSION: "${{ matrix.pyversion }}" }
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: wheelhouse/*/*-m*linux*.whl  # manylinux / musllinux
-
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
@@ -144,12 +122,6 @@ jobs:
     - name: Build wheels
       run: make sdist wheel
       env: { STATIC_DEPS: true, RUN_TESTS: true }
-
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: dist/lxml-*.whl
 
     - name: Upload wheels
       uses: actions/upload-artifact@v2
