@@ -54,7 +54,7 @@ ccache -s || true
 
 # Install python requirements
 echo "Installing requirements [python]"
-python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools==60.9.2 wheel==0.37.1
+python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools==59.6.0 wheel==0.37.1
 if [ -z "${PYTHON_VERSION##*-dev}" ]; then
   python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' --install-option=--no-cython-compile https://github.com/cython/cython/archive/master.zip
 else
