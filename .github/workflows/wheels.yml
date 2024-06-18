@@ -3,6 +3,7 @@ name: Wheel build
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
   sdist:
