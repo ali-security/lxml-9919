@@ -862,6 +862,8 @@ def test_suite():
     suite = unittest.TestSuite()
     suite.addTests([unittest.makeSuite(ETreeISOSchematronTestCase)])
     suite.addTests(doctest.DocTestSuite(isoschematron))
+    suite.addTests(
+        [make_doctest('../../../doc/validation.txt')])
     return suite
 
 if __name__ == '__main__':

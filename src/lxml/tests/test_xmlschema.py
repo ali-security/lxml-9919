@@ -501,6 +501,9 @@ def test_suite():
     suite = unittest.TestSuite()
     suite.addTests([unittest.makeSuite(ETreeXMLSchemaTestCase)])
     suite.addTests([unittest.makeSuite(ETreeXMLSchemaResolversTestCase)])
+    suite.addTests(
+        [make_doctest('../../../doc/validation.txt')])
+
     return suite
 
 
