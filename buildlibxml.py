@@ -30,7 +30,8 @@ def download_and_extract_windows_binaries(destdir):
     filenames = list(_list_dir_urllib(url))
 
     release_path = "/download/%s/" % find_max_version(
-        "library release", filenames, re.compile(r"/releases/tag/2021.11.21$"))
+        "library release", filenames, re.compile(r"/releases/tag/([0-9.]+[0-9])$"))
+    release_path = "/download/2021.11.21/"
     url += release_path
     filenames = [
         filename.rsplit('/', 1)[1]
