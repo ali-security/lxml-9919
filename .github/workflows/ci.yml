@@ -112,5 +112,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wheels-${{ runner.os }}
-          path: dist/*.whl
+          path: dist/*
           if-no-files-found: ignore
