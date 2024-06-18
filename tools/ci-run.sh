@@ -5,20 +5,12 @@ GCC_VERSION=${GCC_VERSION:=8}
 # Set up compilers
 if [ -z "${OS_NAME##ubuntu*}" ]; then
   echo "Installing requirements [apt]"
-  echo "asdfasdf"
-  cat /etc/apt/apt-mirrors.txt
-  echo "fdafdsa"
   sudo apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
   sudo apt install -y gnupg
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
   sudo bash -c 'echo -en "deb http://archive.ubuntu.com/ubuntu bionic main restricted universe multiverse\ndeb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse\n" >> "/etc/apt/sources.list"'
 
-  echo "qwer"
-  cat /etc/apt/sources.list
-  echo "asdf"
-  echo "111"
   sudo apt-get update -y
-  echo "222"
   # gcc-8
   wget http://mirrors.kernel.org/ubuntu/pool/universe/g/gcc-8/gcc-8_8.4.0-3ubuntu2_amd64.deb
   wget http://mirrors.edge.kernel.org/ubuntu/pool/universe/g/gcc-8/gcc-8-base_8.4.0-3ubuntu2_amd64.deb
