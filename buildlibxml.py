@@ -29,10 +29,9 @@ def download_and_extract_windows_binaries(destdir):
     url = "https://github.com/lxml/libxml2-win-binaries/releases"
     filenames = list(_list_dir_urllib(url))
 
-    release_path = "/download/%s/" % find_max_version(
-        "library release", filenames, re.compile(r"/releases/tag/([0-9.]+[0-9])$"))
     release_path = "/download/2021.11.21/"
     url += release_path
+    
     filenames = [
         filename.rsplit('/', 1)[1]
         for filename in filenames
@@ -50,12 +49,22 @@ def download_and_extract_windows_binaries(destdir):
         arch = 'vs2008.' + arch
 
     libs = {}
-    for libname in ['libxml2', 'libxslt', 'zlib', 'iconv']:
-        libs[libname] = "%s-%s.%s.zip" % (
-            libname,
-            find_max_version(libname, filenames),
-            arch,
-        )
+    libs["libxml2"] = "libxml2-%s.%s.zip" % (
+        "2.9.12-1",
+        arch,
+    )
+    libs["libxslt"] = "libxslt-%s.%s.zip" % (
+        "1.1.34",
+        arch,
+    )
+    libs["zlib"] = "zlib-%s.%s.zip" % (
+        "1.2.11",
+        arch,
+    )
+    libs["iconv"] = "iconv-%s.%s.zip" % (
+        "1.14",
+        arch,
+    )
 
     if not os.path.exists(destdir):
         os.makedirs(destdir)
