@@ -88,4 +88,7 @@ CFLAGS="-O3 -g1 -mtune=generic -fPIC -fno-lto" \
   LDFLAGS="-fno-lto" \
   make clean wheel || exit 1
 
+pip install dist/*.whl || exit 1
+python -c "from lxml import etree" || exit 1
+
 ccache -s || true
