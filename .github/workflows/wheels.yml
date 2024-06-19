@@ -46,9 +46,9 @@ jobs:
           - manylinux1_i686
           #- manylinux2010_x86_64
           #- manylinux2010_i686
-          - manylinux_2_24_x86_64
-          - manylinux_2_24_i686
-          - manylinux_2_24_aarch64
+          - manylinux_2_24_x86_64:2022-02-13-594988e
+          - manylinux_2_24_i686:2022-02-13-594988e
+          - manylinux_2_24_aarch64:2022-02-13-594988e
           - musllinux_1_1_x86_64:2022-02-13-594988e
           #- manylinux_2_24_ppc64le
           #- manylinux_2_24_ppc64le
@@ -88,7 +88,6 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
-        name: wheels-${{ matrix.image }}
         path: wheelhouse/*/*-m*linux*.whl  # manylinux / musllinux
         if-no-files-found: ignore
 
