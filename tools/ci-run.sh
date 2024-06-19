@@ -25,7 +25,7 @@ if [ -z "${OS_NAME##ubuntu*}" ]; then
   wget http://mirrors.kernel.org/ubuntu/pool/universe/g/gcc-8/g++-8_8.4.0-3ubuntu2_amd64.deb
   sudo apt install ./libstdc++-8-dev_8.4.0-3ubuntu2_amd64.deb ./g++-8_8.4.0-3ubuntu2_amd64.deb
 
-  sudo apt-get install --allow-downgrades -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.4*" "libxml2-dev=2.9.4*" libxslt1.1 libxslt1-dev || exit 1
+  sudo apt-get install --allow-downgrades -y -q ccache gcc-$GCC_VERSION "libxml2=2.9.12*" "libxml2-dev=2.9.12*" libxslt1.1 libxslt1-dev || exit 1
   sudo /usr/sbin/update-ccache-symlinks
   echo "/usr/lib/ccache" >>$GITHUB_PATH # export ccache to path
 
