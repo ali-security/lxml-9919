@@ -123,10 +123,11 @@ jobs:
       run: |
         python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
         brew install docker colima
-        brew services start colima
 
     - name: Build Linux wheels
-      run: make sdist wheel_${{ matrix.image }}
+      run: |
+        brew services start colima
+        make sdist wheel_${{ matrix.image }}
       env: { STATIC_DEPS: true, PYTHON_BUILD_VERSION: "${{ matrix.pyversion }}" }
 
     - name: Upload wheels
