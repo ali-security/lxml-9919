@@ -49,7 +49,7 @@ jobs:
           - manylinux_2_24_x86_64
           - manylinux_2_24_i686
           - manylinux_2_24_aarch64
-          - musllinux_1_1_x86_64
+          - musllinux_1_1_x86_64:2022-02-13-594988e
           #- manylinux_2_24_ppc64le
           #- manylinux_2_24_ppc64le
           #- manylinux_2_24_s390x
