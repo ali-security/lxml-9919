@@ -73,7 +73,7 @@ wheel_%: dist/lxml-$(LXMLVERSION).tar.gz
 		-e LIBXML2_VERSION="$(MANYLINUX_LIBXML2_VERSION)" \
 		-e LIBXSLT_VERSION="$(MANYLINUX_LIBXSLT_VERSION)" \
 		-e PYTHON_BUILD_VERSION="$(PYTHON_BUILD_VERSION)" \
-		-e WHEELHOUSE=$(subst wheel_,wheelhouse/,$@) \
+		-e WHEELHOUSE="wheelhouse/" \
 		quay.io/pypa/$(subst wheel_,,$@) \
 		bash /io/tools/manylinux/build-wheels.sh /io/$<
 
