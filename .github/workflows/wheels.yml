@@ -88,7 +88,7 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
-        path: wheelhouse/*/*-m*linux*.whl  # manylinux / musllinux
+        path: wheelhouse/*-m*linux*.whl  # manylinux / musllinux
         if-no-files-found: ignore
 
 
@@ -129,7 +129,7 @@ jobs:
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
-        path: wheelhouse/*/*-m*linux*.whl  # manylinux / musllinux
+        path: wheelhouse/*-m*linux*.whl  # manylinux / musllinux
         if-no-files-found: ignore
 
   non-Linux:
