@@ -3,43 +3,43 @@ image: Visual Studio 2019
 
 environment:
   matrix:
-  - python: 310
-  - python: 310-x64
-  - python: 39
-  - python: 39-x64
-  - python: 27
-    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-  - python: 27-x64
-    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-  - python: 38
-  - python: 38-x64
-  - python: 37
-  - python: 37-x64
-  - python: 36
-  - python: 36-x64
-  - python: 35
-  - python: 35-x64
-  - python: 310
-    arch: arm64
-    env: STATIC_DEPS=true
-  - python: 39
-    arch: arm64
-    env: STATIC_DEPS=true
-  - python: 38
-    arch: arm64
-    env: STATIC_DEPS=true
+    - python: 310
+    - python: 310-x64
+    - python: 39
+    - python: 39-x64
+    - python: 27
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    - python: 27-x64
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    - python: 38
+    - python: 38-x64
+    - python: 37
+    - python: 37-x64
+    - python: 36
+    - python: 36-x64
+    - python: 35
+    - python: 35-x64
+    - python: 310
+      arch: arm64
+      env: STATIC_DEPS=true
+    - python: 39
+      arch: arm64
+      env: STATIC_DEPS=true
+    - python: 38
+      arch: arm64
+      env: STATIC_DEPS=true
 
 install:
-    - SET PATH=C:\\Python%PYTHON%;c:\\Python%PYTHON%\\scripts;%PATH%
-    - ps: |
-        $env:PYTHON = "C:\\Python$($env:PYTHON)"
-        if (-not (Test-Path $env:PYTHON)) {
-          curl -o install_python.ps1 https://raw.githubusercontent.com/matthew-brett/multibuild/11a389d78892cf90addac8f69433d5e22bfa422a/install_python.ps1
-          .\\install_python.ps1
-        }
-        # remove the above when appveyor has proper Python 3.8 support
-    - python -m pip.__main__ install -U pip wheel "setuptools<=59.6.0" --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/
-    - pip install --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/ -r requirements.txt
+  - SET PATH=C:\\Python%PYTHON%;c:\\Python%PYTHON%\\scripts;%PATH%
+  - ps: |
+      $env:PYTHON = "C:\\Python$($env:PYTHON)"
+      if (-not (Test-Path $env:PYTHON)) {
+        curl -o install_python.ps1 https://raw.githubusercontent.com/matthew-brett/multibuild/11a389d78892cf90addac8f69433d5e22bfa422a/install_python.ps1
+        .\\install_python.ps1
+      }
+      # remove the above when appveyor has proper Python 3.8 support
+  - python -m pip.__main__ install -U pip wheel "setuptools<=59.6.0" --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/
+  - python -m pip.__main__ install --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/ -r requirements.txt
 
 build: off
 build_script:
