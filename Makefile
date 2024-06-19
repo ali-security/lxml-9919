@@ -74,7 +74,6 @@ wheel_%: dist/lxml-$(LXMLVERSION).tar.gz
 		-e LIBXSLT_VERSION="$(MANYLINUX_LIBXSLT_VERSION)" \
 		-e PYTHON_BUILD_VERSION="$(PYTHON_BUILD_VERSION)" \
 		-e WHEELHOUSE="wheelhouse/" \
-		$(if $(findstring manylinux2014_aarch64,$@),--platform linux/arm64,) \
 		quay.io/pypa/$(subst wheel_,,$@) \
 		bash /io/tools/manylinux/build-wheels.sh /io/$<
 
