@@ -26,19 +26,28 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: MatteoH2O1999/setup-python@v4
-      with:
-        python-version: ${{ matrix.python_version }}
+    # - name: Set up Python
+    #   uses: MatteoH2O1999/setup-python@v4
+    #   with:
+    #     python-version: ${{ matrix.python_version }}
 
     - name: Install MacOS dependencies
       if: startsWith(matrix.os, 'mac')
       run: |
+        brew install pyenv
+        eval "$(pyenv init -)"
+        pyenv install 3.9
+        pyenv global 3.9
+        echo "/home/arch/.pyenv/shims" >> $GITHUB_PATH
+        
+        python --version
         brew install automake libtool
         ln -s /usr/local/bin/glibtoolize /usr/local/bin/libtoolize
 
     - name: Install dependencies
-      run: python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' setuptools wheel -r requirements.txt
+      run: |
+        python --version
+        python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' setuptools wheel -r requirements.txt
 
     - name: Build wheels
       run: make sdist wheel
