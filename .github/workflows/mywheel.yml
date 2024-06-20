@@ -46,11 +46,14 @@ jobs:
 
     - name: Install dependencies
       run: |
+        echo "/home/arch/.pyenv/shims" >> $GITHUB_PATH
         python --version
         python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' setuptools wheel -r requirements.txt
 
     - name: Build wheels
-      run: make sdist wheel
+      run: |
+        echo "/home/arch/.pyenv/shims" >> $GITHUB_PATH
+        make sdist wheel
       env: { STATIC_DEPS: true, RUN_TESTS: true }
 
     - name: Upload wheels
