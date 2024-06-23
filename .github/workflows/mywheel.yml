@@ -25,7 +25,7 @@ jobs:
               - image: manylinux1_x86_64
                 pyversion: "*"
             include:
-              - image: manylinux2014_aarch64:2022-02-12-0ba5128
+              - image: manylinux2014_aarch64:2021-12-30-cb9fd5b
                 pyversion: "cp36*"
     
         steps:
