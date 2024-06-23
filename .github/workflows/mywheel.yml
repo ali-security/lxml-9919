@@ -31,7 +31,7 @@ jobs:
     #   with:
     #     python-version: ${{ matrix.python_version }}
 
-    - name: Only Python3.9, Python3.10 uses sdk 10.15
+    - name: Only Python3.9, Python3.10 use sdk 10.15
       if: matrix.python_version == '3.9' || matrix.python_version == '3.10'
       run: echo "MACOSX_DEPLOYMENT_TARGET=10.15" >> $GITHUB_ENV
 
