@@ -24,7 +24,7 @@ jobs:
       run: python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U pip setuptools && python -m pip install --index-url 'https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/' -U docutils pygments sphinx sphinx-rtd-theme -r requirements.txt
 
     - name: Build docs and sdist
-      run: make sdist
+      run: make html sdist
       env: { STATIC_DEPS: false }
 
     - name: Upload sdist
