@@ -38,7 +38,7 @@ install:
         .\\install_python.ps1
       }
       # remove the above when appveyor has proper Python 3.8 support
-  - python -m pip.__main__ install -U wheel "setuptools<=59.6.0" --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/
+  - python -m pip.__main__ install -U wheel "setuptools<=50.3.2" --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/
   - python -m pip.__main__ install --index-url https://:2022-02-17T14:33:16.238304Z@time-machines-pypi.sealsecurity.io/ -r requirements.txt
 
 build: off
