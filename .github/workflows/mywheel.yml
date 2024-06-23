@@ -10,7 +10,7 @@ on:
 
 jobs:
     Linux_manylinux2014:
-        runs-on: ubuntu-22.04 # ARM64
+        runs-on: ubuntu-latest # ARM64
     
         strategy:
           # Allows for matrix sub-jobs to fail without canceling the rest
