@@ -45,6 +45,7 @@ jobs:
         echo "/home/arch/.pyenv/shims" >> $GITHUB_PATH
         
         python --version
+        python -m ensurepip
         brew install automake libtool
         ln -s /usr/local/bin/glibtoolize /usr/local/bin/libtoolize
 
